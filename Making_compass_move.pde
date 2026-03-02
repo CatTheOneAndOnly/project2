@@ -1,14 +1,17 @@
 int compassX;
+int compassAngle;
 
 void setup() {  //===============
-  size(800, 600);
+  size(800, 600, P2D);
   compassX = 0;
+  compassAngle = 0;
 } //end Setup ===================
 
 void draw() { //=================
   background(200);
-  compass(compassX, 300);
+  compass(compassX, 300, compassAngle);
   compassX = compassX + 5;
+  compassAngle = compassAngle + 5;
   if (compassX > 1000) {
     compassX = -200;
   }
@@ -16,9 +19,10 @@ void draw() { //=================
 
 
 //           Parameters   
-void compass(int x, int y) { //==============
+void compass(int x, int y, int angle) { //==============
   pushMatrix();    //begin transformations
   translate(x, y);
+  rotate(radians(angle));
   strokeWeight(0);
   //fourth ring
   fill(0);
